@@ -17,14 +17,21 @@ As a passionate football fan and follower of the Spanish La Liga, I have often h
 
 All datasets were primarily sourced from the publicly available CSV file **'Football Data from Transfermarkt'** on Kaggle, these were structured, cleaned, and filtered specifically for **Spanish top-tier football** (`competition_id = 'ES1'`). Additional context and supplementary data were gathered from other reputable web sources to fill in gaps not covered by the original dataset.
 
-### Filtering for La Liga
+## Technologies Used
+- Python (Pandas, NumPy, datetime)
+- Data Visualizations: Matplotlib and Seaborn
+- NoteBook: Jupyter Laboratory
+
+## Methods
+
+#### Filtering for La Liga
 ```python
 games_data_ESP = games_data[games_data['competition_id'] == 'ES1']
 clubs_data_ESP = clubs_data[clubs_data['domestic_competition_id'] == 'ES1']
 appearances_data_ESP = appearances_data[appearances_data['competition_id'] == 'ES1']
 ```
 
-### Data Cleaning and Feature Engineering
+#### Data Cleaning and Feature Engineering
 
 Key transformations done on this work included:
 
@@ -52,7 +59,7 @@ games_data_ESP['home_club_formation'] = games_data_ESP['home_club_formation'].ap
 ```python
 games_data_ESP['home_points'] = games_data_ESP.apply(lambda row: 3 if row['home_club_goals'] > row['away_club_goals'] else 1 if row['home_club_goals'] == row['away_club_goals'] else 0, axis=1)
 ```
-### Key Questions Explored
+#### Key Questions Explored
 - Which club maximizes **home advantage** ?
 - Does larger stadium mean **larger attendance percentage**?
 - Does **larger crowd** really improve team performance?
@@ -60,14 +67,14 @@ games_data_ESP['home_points'] = games_data_ESP.apply(lambda row: 3 if row['home_
 - How do **discipline patterns(cards)** differ with crowd size?
 - Do **certain managers** consistently deliver at home?
 
-### Analysis Highlights
+#### Analysis Highlights
 - **Larger stadiums attract bigger crowds** and clubs with **higher attendance typically perform better at home**.
 - **Home teams receive fewer cards when attendance is high** suggesting crowd induced discipline and confidence.
 - **Younger squads** not only score more goals but also **attract more fans**.
 - Surprisingly, **spending more on transfers does not strongly correlate with home performance**.
 - **Home advantage ratio** reveals teams that dominate at home but underperform away.
 
-### Visualizations
+#### Visualizations and Insight
 This project includes many Matplotlib/Seaborn Visuals which include:
 1. **Correlation Matrix**
    
@@ -98,8 +105,8 @@ This project includes many Matplotlib/Seaborn Visuals which include:
 3. **Home Adavantage Ratio and Home Team Performance**
    
    Due to the established correlation between Home Team performance and Average attendance I visualized the top ten performing teams by home points and the top ten teams by
-   attendance. This to get a visual presentation of the top performing teams on both metrics and compare where they fall on both. Also, to better quantify home advantage on
-   team performance in the Spanish football league, I calculated and visualized the **Home Advantage Ratio**, a metric got by dividing each team's home points by their
+   attendance. This is to get a visual presentation of the top performing teams on both metrics and compare where they fall on both. Also, to better quantify home advantage
+   on team performance in the Spanish football league, I calculated and visualized the **Home Advantage Ratio**, a metric got by dividing each team's home points by their
    total points. This brings to light how some teams capitalize majorly on home support but falter away from home.
    ```python
    # Home Advantage Ratio
@@ -118,13 +125,38 @@ This project includes many Matplotlib/Seaborn Visuals which include:
    The bar charts above show that 8/10 teams with the highest average attendance have the highest points gathered in home matches. Also, 8/10 teams with highest average
    attendance have over 0.55 home advantage ratio. **This shows significant reliance of these teams with high home attendance on home support to win matches**.                 Comparitively, only 4/10 teams with the highest home attendance percentage have high home points, this shows that **home attendance percentage is not a metric that          significantly impacts home team performance**.
 
- 4. **Coach Impact Analysis(Home vs Away)**
+ 5. **Coach Impact Analysis(Home vs Away)**
     
-    No football perfromance analysis in football is complete without considering the impact of coaches. Therefore, to better understand the dynamics of home advantage, I        conducted an analysis of coach performances based on average points won in home and away games, focusing on managers with a minimum of 9 home games managed. This            ensures that the insights drawn are based on consistent, long-term trends rather than short-term fluctuations.
-    - This analysis has two complementary visualizations:
-      1. A heatmap showing manager-team performance correlations for home matches.
-      2. Another heatmap showing manager-team performance correlations for away matches.
+    No football performance analysis in football is complete without considering the impact of coaches. Therefore, to better understand the dynamics of home advantage, I        conducted an analysis of coach performances based on average points won in home and away games, focusing on managers with a minimum of 9 home games managed. This            ensures that the insights drawn are based on consistent, long-term trends rather than short-term fluctuations.
 
+    ```python
+    manager_team_matrix_home = team_manager_performance_home_filtered.pivot_table(index='home_club_manager_name', columns='home_club_name', values='home_points')
+    plt.figure(figsize=(5,5))
+    sns.heatmap(manager_team_matrix_home, annot=True, cmap='coolwarm', square=True, linewidths=0.5, linecolor='black')
+    plt.title('Top 20 Manager-Team Performance (Home Games)')
+    plt.show()
+    ```
+
+
+     ![Manager by team(home)](https://github.com/user-attachments/assets/511b68ed-d211-4b82-aff1-f936ca7cbf8e)
+    
+    *fig 5: Heatmap(Coach performance Home)*
+    
+     ![Manager by team(away)](https://github.com/user-attachments/assets/f3ce0dda-cb12-43fb-9254-43d28b5554e4)
+    
+    *fig 6: Heatmap(Coach performance Away)*
+
+    The Heatmap above shows that managers/coaches also influence home team performance in the league to varying extents, highlighting the need for thorough profiling by         teams before recruitment. Some managers are seen to perform exceedingly well in home games but not away, some kept fair home records across many teams, few performed        better away from home while others did poorly at home in one team and well in another.
+    
+## Conclusion
+
+This analysis confirms that **home advantage in Spanish La Liga is real and measurable**. Clubs with larger stadiums and higher attendance tend to earn more points and concede fewer goals and cards at home, while younger squads boost both goal output and fan turnout. Although big transfer spends and squad size don’t guarantee success, tactical approach, often driven by certain managers play important role.
+
+By combining metrics like **home advantage ratio**, **attendance percentage**, and **manageral points per game**, I’ve built a framework that can inform coaching strategies, match-day engagement, and long-term squad planning. With richer data (xG, tactical events, referee profiling), this foundation could grow into a powerful tool for clubs, analysts, and fans alike.
+
+## Recommendations
+
+      
    
 
 
