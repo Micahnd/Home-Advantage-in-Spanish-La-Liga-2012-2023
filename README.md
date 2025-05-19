@@ -76,6 +76,7 @@ This project includes many Matplotlib/Seaborn Visuals which include:
    sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', square=True, fmt='.2f', linewidths=0.5)
    plt.show()
    ```
+![Corr Matrix](https://github.com/user-attachments/assets/06549ef3-a32a-4ccc-a828-9a6fa10da0ff)
 
 
 The heatmap above shows several key correlations within the data. There is a strong positive correlation between stadium capacity (number of seats) and attendance. Conversely, a strong negative correlation exists between attendance and the number of home yellow cards, while a slight negative correlation also exists with away yellow cards. There is a slight negative correlation between average age and attendance+overall performance and high attendance percentage does not appear to correlate with improved team performance. Interestingly, squad size and higher transfer spending do not show a significant correlation with team performance. 
