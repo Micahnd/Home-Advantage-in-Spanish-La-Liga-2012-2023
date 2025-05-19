@@ -70,6 +70,7 @@ games_data_ESP['home_points'] = games_data_ESP.apply(lambda row: 3 if row['home_
 ### Visualizations
 This project includes many Matplotlib/Seaborn Visuals which include:
 1. **Correlation Matrix**
+   
    This visualizes the relationship between the various factors in the dataset.
    ```python
    plt.figure(figsize=(8, 8))
@@ -77,7 +78,54 @@ This project includes many Matplotlib/Seaborn Visuals which include:
    plt.show()
    ```
 ![Corr Matrix](https://github.com/user-attachments/assets/06549ef3-a32a-4ccc-a828-9a6fa10da0ff)
+*fig 1: Correlation Analysis*
 
 
-The heatmap above shows several key correlations within the data. There is a strong positive correlation between stadium capacity (number of seats) and attendance. Conversely, a strong negative correlation exists between attendance and the number of home yellow cards, while a slight negative correlation also exists with away yellow cards. There is a slight negative correlation between average age and attendance+overall performance and high attendance percentage does not appear to correlate with improved team performance. Interestingly, squad size and higher transfer spending do not show a significant correlation with team performance. 
+    The heatmap above shows some correlations. There's a strong positive correlation between stadium capacity and attendance, then between attendance and team performance.      However, attendance negatively correlates with home yellow cards and shows a slight negative trend with away yellow cards. There is also a slight negative relationship      between average age and both attendance and overall performance. Interestingly, high attendance percentages(filling up stadiums) don’t necessarily lead to better team       performance, and factors like squad size and transfer spending don’t show a strong connection to performance either.
+
+2. **Scatter Plots**
+   
+   To further illustrate the various relationships shown on the correlationship matrix, the scatter plot is used. This showed the relationships between
+   - Home Performance(goals and points) and attendance
+   - Home Yellow cards and attendance
+   - Attendance Percentage and Home Performance.
+
+![ScatterPlot](https://github.com/user-attachments/assets/a9404b3c-8560-4c4f-b5c8-ba077029d6e6)
+*fig 2: Scatter plots*
+
+    The scatter plots further confirm the findings of the correlation analysis; that home team performance is highly directly impacted by stadium capacity and average           attendance while the inverse is the case for the away team. It further shows that filling up smaller stadiums to the 'brim' does not clearly impact home team                performance.
+
+3. **Home Adavantage Ratio and Home Team Performance**
+   
+   Due to the established correlation between Home Team performance and Average attendance I visualized the top ten performing teams by home points and the top ten teams by
+   attendance. This to get a visual presentation of the top performing teams on both metrics and compare where they fall on both. Also, to better quantify home advantage on
+   team performance in the Spanish football league, I calculated and visualized the **Home Advantage Ratio**, a metric got by dividing each team's home points by their
+   total points. This brings to light how some teams capitalize majorly on home support but falter away from home.
+   ```python
+   # Home Advantage Ratio
+   games_data_ESP['total_points'] = games_data_ESP['home_points'] + games_data_ESP['away_points']
+   home_advantage_ratio = games_data_ESP.groupby('home_club_name')[['home_points', 'total_points']].sum().reset_index()
+   home_advantage_ratio['home_advantage_ratio'] = home_advantage_ratio['home_points'] / home_advantage_ratio['total_points']
+   ```
+   ![Bar chart Home adv](https://github.com/user-attachments/assets/f8fdedab-dd98-4c06-ba58-855fd9e9fbc2)
+   *fig 3: Bar Charts(Home advantage ratio)*
+
+    ![Attendance %](https://github.com/user-attachments/assets/0a10f74b-275b-4319-b277-2ffd8502dee2)
+   
+   *fig 4: Bar Chart(Home attendance percentage)*
+
+
+   The bar charts above show that 8/10 teams with the highest average attendance have the highest points gathered in home matches. Also, 8/10 teams with highest average
+   attendance have over 0.55 home advantage ratio. **This shows significant reliance of these teams with high home attendance on home support to win matches**.                 Comparitively, only 4/10 teams with the highest home attendance percentage have high home points, this shows that **home attendance percentage is not a metric that          significantly impacts home team performance**.
+
+ 4. **Coach Impact Analysis(Home vs Away)**
+    
+    No football perfromance analysis in football is complete without considering the impact of coaches. Therefore, to better understand the dynamics of home advantage, I        conducted an analysis of coach performances based on average points won in home and away games, focusing on managers with a minimum of 9 home games managed. This            ensures that the insights drawn are based on consistent, long-term trends rather than short-term fluctuations.
+    - This analysis has two complementary visualizations:
+      1. A heatmap showing manager-team performance correlations for home matches.
+      2. Another heatmap showing manager-team performance correlations for away matches.
+
+   
+
+
 
