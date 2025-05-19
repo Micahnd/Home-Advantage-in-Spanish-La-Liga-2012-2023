@@ -155,6 +155,56 @@ This analysis confirms that **home advantage in Spanish La Liga is real and meas
 By combining metrics like **home advantage ratio**, **attendance percentage**, and **manageral points per game**, I’ve built a framework that can inform coaching strategies, match-day engagement, and long-term squad planning. With richer data (xG, tactical events, referee profiling), this foundation could grow into a powerful tool for clubs, analysts, and fans alike.
 
 ## Recommendations
+Based on the findings in this project, here are a few suggestions for clubs, analysts, and decision-makers in Spanish football:
+
+1. **Prioritize Attendance Growth**
+Teams that consistently draw large crowds perform better at home. Clubs should invest in fan engagement, ticket incentives, local outreach to increase turnout and subsequently invest in larger stadiums.
+
+2. **Use Youth Strategically**
+Younger squads showed stronger attacking output and drew bigger crowds. Clubs should consider balancing experience with younger, more dynamic players, especially in home matches.
+
+3. **Don’t Rely on Big Transfers Alone**
+Transfer spending didn’t directly correlate with better results. Clubs should focus on tactical cohesion and fit especially with coach recruitments rather than simply spending more in the market.
+
+
+## Data Limitations and Opportunities for Expansion
+While the current dataset gives valuable insights, more enriched data could enhance future versions of this project:
+- Expected Goals and Shots data (xG)
+  This dataset lacks expected goals, possession or shot quality metrics, these could have seperated lucky wins from actual incredible home performances.
+- Atmosphere and Fan Influence
+  While attendance figures capture qauntity, they don't capture quality or intensity. The psychological effects of crowd energy, chants and noise levels is unaccounted for.
+  Integrating sentiment data, crowd noise measured in decibels or fan behavior would be a good step forward.
+- Referee Behavior
+  Athough referee names are captured, their match behavior could also be added and analysed to account for penalties and cards.
+
+## Data Source & Licensing
+
+The data used in this project was sourced from the following Kaggle dataset:
+
+**[Player Scores and Match Events Dataset by David Cariboo](https://www.kaggle.com/datasets/davidcariboo/player-scores)**
+
+> This dataset includes player appearances, match outcomes, clubs, stadiums, managers, events, and more from European football leagues between 2012 and 2023. The data is freely available for analysis and educational purposes under the [Kaggle Datasets License](https://www.kaggle.com/datasets/davidcariboo/player-scores/license).
+
+Please refer to the original Kaggle page for attribution, updates, or further details.
+
+## References
+
+- David Cariboo (Kaggle Dataset Author):
+[Player Scores Dataset](https://www.kaggle.com/datasets/davidcariboo/player-scores)
+
+- La Liga Historical Fixtures and Results:
+Used indirectly for performance context and club references.
+
+
+## Author 
+
+### Micah Ndubuisi Ezirim 
+Data Analyst | Lagos, Nigeria
+
+[linkedIn](https://www.linkedin.com/in/ezirim-micah-268955241)
+
+
+
 
       
    
