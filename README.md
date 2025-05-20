@@ -44,6 +44,7 @@ using home club averages:
 games_data_ESP['attendance'] = games_data_ESP.groupby('home_club_id')['attendance'].transform(
 lambda x: x.fillna(x.mean())
 ```
+Over 400 matches were seen to record 0 attendance around 2020 mostly due to the COVID-19 pandemic, these data were replaced with home club mean attendance to maintain data integrity and not distort data by excluding so many important matches.
 - **Standardizing match formations** and correcting wrong entries:
 ```python
 def fix_formation(x):
