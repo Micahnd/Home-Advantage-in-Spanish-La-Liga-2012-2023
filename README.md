@@ -1,5 +1,8 @@
 # Home Advantage in Spanish La-Liga (2012-2023)
+
 *How much does playing at home really matter in football? This project analyses over a decade of Spanish top-flight football to uncover the impact of crowd presence, formations, squad age and coaching on match outcomes.*
+
+**[*click here to view the full Jupyter Notebook*](https://github.com/Micahnd/Home-Advantage-in-Spanish-La-Liga-2012-2023/blob/main/Home-Advantage-in-Spanish-La-Liga-2012-2023-Notebook.ipynb)**
 
 ## Project Objective
 This analysis investigates **home advantage** in Spanish La Liga by examining over 4,000 matches between 2012 and 2023. By leveraging player, match and club-level datasets, the project explores:
